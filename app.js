@@ -21,8 +21,8 @@ app.get('/', function (req, res) {
     res.sendFile('index.html',{ root: __dirname });
 })
 
-app.use('/api/Books',require('./app/routes/BookRoute'));
-app.use('/api/Authors', require('./app/routes/AuthorRoute'))
+app.use('/api',require('./routes/SupplierRoute'));
+
 app.listen(3000, function () {
     console.log('BookAPI app listening on port 3000!')
 })
