@@ -22,6 +22,7 @@ router.route('/supplier')
             res.json({message:'Supplier Added Successfully'});
         });
     })
+
     //Get all Supplier List
     .get(function(req,res){
         Supplier.find(function(err, suppliers){
@@ -32,6 +33,16 @@ router.route('/supplier')
     });
 
 router.route('/supplier/:supplier_id')
+
+    //Get supplier by ID
+    .get(function(req,res){
+        Supplier.findById(req.params.supplier_id, function(err, supplier){
+            if(err)
+                res.send(err);
+            res.json(supplier);
+        });
+    })
+
     //Update a Supplier
     .put(function(req, res){
         Supplier.findById(req.params.supplier_id, function(err, supplier){
