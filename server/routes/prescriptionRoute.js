@@ -12,20 +12,18 @@ var presRoute = express.Router();
 // });
 
 // Get All prescriptions
-presRoute.get('/', function (req, res) {
-    prescription.find({}, function (err, docs) {
-        if(err){
-            res.sendStatus(500);
-            res.end();
-        }
-        else{
-            res.json(docs);
-        }
+presRoute.get('/prescription', function (req, res) {
+    prescription.find({}, function (err, presc) {
+        if(err)
+            res.sendStatus(err);
+
+        res.json(presc);
+
     });
 });
 
 //Get a prescription Identified by patient name
-presRoute.get('/patient/:patient_name', function (req, res) {
+presRoute.get('/prescription/:patient_name', function (req, res) {
     prescription.find({name:req.params.patient_name}, function (err, books) {
         if(err){
             res.sendStatus(500);
@@ -74,7 +72,7 @@ presRoute.delete('/:bookId', function (req, res) {
 });
 
 // Update prescription
-presRoute.put('/:id', function (req, res) {
+presRoute.put('/prescription/:id', function (req, res) {
     prescription.findById(req.params.id, function (err, book) {
         if (err)
             res.sendStatus(500);
