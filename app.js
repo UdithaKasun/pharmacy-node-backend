@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser')
 var cors = require('cors')
 
-mongoose.connect('mongodb://localhost/finalExam_1');
+mongoose.connect('mongodb://localhost/pharmacyDB');
 
 const app = express()
 
